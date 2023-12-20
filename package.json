@@ -23,7 +23,6 @@
     "test-macos": "npm run lint && npm run test-gui && npm run test-shared",
     "test-linux": "npm run lint && xvfb-run --auto-servernum npm run test-gui && xvfb-run --auto-servernum npm run test-shared",
     "test": "echo npm run test-{linux,windows,macos}",
-    "preflight": "bash ./build/preflight.sh",
     "package": "electron-forge package",
     "start": "electron-forge start",
     "make": "electron-forge make"

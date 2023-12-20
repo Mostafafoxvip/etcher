@@ -130,12 +130,12 @@ runs:
 
         elif [[ "${RUNNER_OS}" == macOS ]]; then
           PLATFORM=Darwin
-          BUILD_ARCHS="x64,arm64"
+          BUILD_ARCHS="x64 arm64"
           SHA256SUM_BIN='shasum -a 256'
 
         elif [[ "${RUNNER_OS}" == Windows ]]; then
           PLATFORM=Windows
-          #BUILD_ARCHS="ia32,x64" -- distutils fails to build for ia32
+          #BUILD_ARCHS="ia32 x64" -- distutils fails to build for ia32
           BUILD_ARCHS="x64"
 
         else
@@ -143,7 +143,9 @@ runs:
           exit 1
         fi
 
-        npx electron-forge make --arch="${BUILD_ARCHS}"
+        for arch in ${BUILD_ARCHS}; do
+          npx electron-forge make --arch="${arch}"
+        done
 
         echo "version=${APPLICATION_VERSION}" >> $GITHUB_OUTPUT
 
