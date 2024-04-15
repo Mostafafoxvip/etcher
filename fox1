@@ -1,0 +1,8 @@
+# فوكس1.py
+
+class NewSection:
+    def __init__(self):
+        pass
+    
+    def new_section_function(self):
+        print("This is a function inside the new section.")
